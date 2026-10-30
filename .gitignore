@@ -1,0 +1,3 @@
+# Ignore the local configuration file containing credentials
+appl/conf.php
+

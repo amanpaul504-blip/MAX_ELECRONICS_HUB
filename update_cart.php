@@ -1,0 +1,1 @@
+<?php session_start(); $_SESSION['cart']=$_SESSION['cart']??[]; foreach(($_POST['qty']??[]) as $id=>$q){$id=(int)$id;$q=(int)$q;if($q<=0)unset($_SESSION['cart'][$id]);else $_SESSION['cart'][$id]=min(20,$q);} header('Location: cart.php'); exit; ?>

@@ -1,0 +1,74 @@
+/* Base Page Settings */
+body {
+  padding:40px;
+  margin: 40px 30px;
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  line-height: 1.2; /* Replaced invalid line-spacing */
+  color: #333333;
+  background-color: #e6f2ff; /* Cleaner light blue tone */
+}
+
+/* Typography */
+h3 {
+  font-size: 28px;
+  color: #1a365d;
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: justify;
+  margin-bottom: 25px;
+  font-family: Arial,sans-serif;
+}
+
+/* Lists */
+ul {
+  list-style-type: square;
+  padding-left: 20px;
+  line-spacing: 1.5px;
+  font-size: 22px;
+  font-family: Arial, sans-serif;
+}
+
+ol {
+  list-style-type: numbers;
+  padding-left: 20px;
+  line-spacing: 1.5px;
+  font-size: 22px;
+  font-family: Arial, sans-serif;
+}
+
+/* Tables */
+table, th, td {
+  border:1px solid black;
+  border-collapse: collapse;
+  text-align: center; 
+  line-spacing:10px;
+  font-size: 16px; 
+  padding-top:10px;
+  font-family: Arial,sans-serif;
+}
+
+/* Links inside the text */
+a {
+  color: #333333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: whitesmoke;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  body {
+    margin: 20px 15px;
+    font-size: 16px;
+  }
+  
+  h3 {
+    font-size: 22px;
+  }
+}

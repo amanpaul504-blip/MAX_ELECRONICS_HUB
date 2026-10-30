@@ -1,0 +1,8 @@
+<?php
+session_start(); require 'config.php'; $error='';
+if($_SERVER['REQUEST_METHOD']==='POST'){
+ $fname=trim($_POST['fname']??'');$lname=trim($_POST['lname']??'');$email=trim($_POST['email']??'');$password=$_POST['password']??'';
+ if(!$fname||!$lname||!filter_var($email,FILTER_VALIDATE_EMAIL)||strlen($password)<6){$error='Enter valid details and a password of at least 6 characters.';}
+ else{$hash=password_hash($password,PASSWORD_DEFAULT);$stmt=$conn->prepare("INSERT INTO regis_form(fname,lname,email,password) VALUES(?,?,?,?)");$stmt->bind_param("ssss",$fname,$lname,$email,$hash);if($stmt->execute()){$_SESSION['fname']=$fname;header('Location: index.php');exit;}else{$error='That email is already registered.';}}
+}
+?><!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Register | MAX ELECTRONICS HUB</title><link rel="stylesheet" href="style.css"></head><body><?php include 'header.php'; ?><main class="page container"><form class="checkout-form" method="post"><h1>Create Account</h1><?php if($error): ?><div class="notice danger"><?=htmlspecialchars($error)?></div><?php endif; ?><label>First Name<input name="fname" required></label><label>Last Name<input name="lname" required></label><label>Email<input type="email" name="email" required></label><label>Password<input type="password" name="password" minlength="6" required></label><br><button class="btn primary">Create Account</button></form></main><?php include 'footer.php'; ?></body></html>

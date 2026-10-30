@@ -1,0 +1,6 @@
+<?php
+session_start(); require 'config.php'; $error='';
+if($_SERVER['REQUEST_METHOD']==='POST'){ $email=trim($_POST['email']??'');$password=$_POST['password']??'';
+$stmt=$conn->prepare("SELECT fname,lname,password FROM regis_form WHERE email=?");$stmt->bind_param("s",$email);$stmt->execute();$r=$stmt->get_result();$u=$r->fetch_assoc();
+if($u && password_verify($password,$u['password'])){$_SESSION['fname']=$u['fname'];header('Location: index.php');exit;} $error='Invalid email or password.';}
+?><!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login | MAX ELECTRONICS HUB</title><link rel="stylesheet" href="style.css"></head><body><?php include 'header.php'; ?><main class="page container"><form class="checkout-form" method="post"><h1>Login</h1><?php if($error): ?><div class="notice danger"><?=$error?></div><?php endif; ?><label>Email<input type="email" name="email" required></label><label>Password<input type="password" name="password" required></label><br><button class="btn primary">Login</button> <a class="btn secondary" href="register.php">Create Account</a></form></main><?php include 'footer.php'; ?></body></html>
